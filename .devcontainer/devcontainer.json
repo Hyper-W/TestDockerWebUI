@@ -22,7 +22,6 @@
                 "eservice-online.vs-sharper",
                 "tintoy.msbuild-project-tools",
                 "ms-dotnettools.blazorwasm-companion",
-                "MS-CEINTL.vscode-language-pack-ja",
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker"
             ]

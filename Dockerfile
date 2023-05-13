@@ -17,6 +17,7 @@ ENV urls="http://*:5000"
 ARG USER=user
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ARG DOT_VERSION=6.0
 
 RUN apk update && apk add --no-cache docker-cli docker-cli-compose \
     && addgroup -g ${GROUP_ID} ${USER} \
@@ -28,9 +29,11 @@ ENV PATH=$PATH:/usr/libexec/docker/cli-plugins/
 
 USER ${USER}
 
-COPY ./nginx /TestDockerWebUI/nginx
 COPY --from=Builder /TestDockerWebUI/bin/Release/net${DOT_VERSION}/linux-musl-x64/publish/TestDockerWebUI /TestDockerWebUI/TestDockerWebUI
 COPY --from=Builder /TestDockerWebUI/bin/Release/net${DOT_VERSION}/linux-musl-x64/publish/wwwroot /TestDockerWebUI/wwwroot
+# COPY ./compose/nginx /TestDockerWebUI/compose/nginx
+
+VOLUME [ "/TestDockerWebUI/compose/nginx" ]
 
 WORKDIR /TestDockerWebUI
 

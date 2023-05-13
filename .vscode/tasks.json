@@ -35,7 +35,10 @@
                 "--project",
                 "${workspaceFolder}/TestDockerWebUI.csproj"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            }
         }
     ]
 }

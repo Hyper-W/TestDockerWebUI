@@ -1,0 +1,58 @@
+﻿@page "/"
+@using System.Diagnostics;
+
+<PageTitle>TestDockerWebUIPage</PageTitle>
+
+<h1>TestDockerWebUIPage</h1>
+
+<button @onclick="ComposeUp">ComposeUp</button>
+<button @onclick="ComposeDown">ComposeDown</button>
+<button @onclick="GetLogs">GetLogs</button>
+
+<br><br>
+
+<td>@((MarkupString)logs.Replace("\n", "<br>"))</td>
+
+@code {
+
+    private string logs = "";
+
+    private ProcessStartInfo GetProcessStartInfo(string execAction)
+    {
+        var execCommand = "docker";
+        var execSubCommand = "compose";
+        var execFileOption = "-f";
+        var composeFile = "./compose/nginx/docker-compose.yml";
+
+        return new ProcessStartInfo()
+            {
+                FileName = execCommand,
+                Arguments = execSubCommand + " " + execFileOption + " " + composeFile + " " + execAction,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+    }
+
+    private void StartProcess(string execAction)
+    {
+        var processStartinfo = GetProcessStartInfo(execAction);
+        var pro = Process.Start(processStartinfo);
+        logs = pro!.StandardOutput.ReadToEnd();
+        pro.WaitForExit();
+    }
+
+    private void ComposeUp()
+    {
+        StartProcess("up -d");
+    }
+    private void ComposeDown()
+    {
+        StartProcess("down --rmi all -v");
+    }
+
+    private void GetLogs()
+    {
+        StartProcess("logs");
+    }
+}

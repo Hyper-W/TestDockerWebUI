@@ -3,7 +3,7 @@ services:
     build:
       context: .
       args:
-        - USER=${USER:-user} # # Your User Name
+        - USER=${USER:-user} # Your User Name
         - USER_ID=${USER_ID:-1000} # Your User ID
         - GROUP_ID=${GROUP_ID:-1000} # Your GROUP ID
         - DOT_VERSION=6.0 # dotnet version
@@ -11,5 +11,12 @@ services:
     container_name: testdockerwebuiebui
     ports:
       - "5000:5000"
+    volumes:
+      - type: bind
+        source: ./compose/nginx
+        target: /TestDockerWebUI/compose/nginx
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
     environment:
       - urls=http://*:5000

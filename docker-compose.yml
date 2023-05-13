@@ -1,0 +1,15 @@
+services:
+  testdockerwebuiebui:
+    build:
+      context: .
+      args:
+        - USER=${USER:-user} # # Your User Name
+        - USER_ID=${USER_ID:-1000} # Your User ID
+        - GROUP_ID=${GROUP_ID:-1000} # Your GROUP ID
+        - DOT_VERSION=6.0 # dotnet version
+    image: testdockerwebuiebui
+    container_name: testdockerwebuiebui
+    ports:
+      - "5000:5000"
+    environment:
+      - urls=http://*:5000

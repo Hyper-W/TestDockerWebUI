@@ -1,0 +1,23 @@
+services:
+  testdockerwebui-dev:
+    build:
+      context: .
+      args:
+        - USER=${USER:-user} # # Your User Name
+        - USER_ID=${USER_ID:-1000} # Your User ID
+        - GROUP_ID=${GROUP_ID:-1000} # Your GROUP ID
+        - DOT_VERSION=6.0 # dotnet version
+        - UBUNTU_VERSION_NAME=latest # ubuntu version
+    image: testdockerwebui-dev
+    container_name: testdockerwebui-dev
+    ports:
+      - 5001:5000
+    volumes:
+      - type: bind
+        source: ../
+        target: /TestDockerWebUI
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    tty: true
+    command: bash

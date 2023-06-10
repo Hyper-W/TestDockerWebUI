@@ -8,21 +8,20 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-dotnettools.csharp",
-                "ms-dotnettools.vscode-dotnet-runtime",
-                "kreativ-software.csharpextensions",
+                "ms-dotnettools.csdevkit",
+                // "ms-dotnettools.csharp",
+                // "ms-dotnettools.vscode-dotnet-runtime",
+                // "kreativ-software.csharpextensions",
+                // "formulahendry.dotnet-test-explorer",
+                // "eservice-online.vs-sharper",
                 "fudge.auto-using",
-                "formulahendry.dotnet-test-explorer",
-                "leopotam.csharpfixformat",
                 "josephwoodward.vscodeilviewer",
                 "k--kato.docomment",
                 "patcx.vscode-nuget-gallery",
                 "jmrog.vscode-nuget-package-manager",
                 "jesschadwick.nuget-reverse-package-search",
-                "eservice-online.vs-sharper",
-                "tintoy.msbuild-project-tools",
                 "ms-dotnettools.blazorwasm-companion",
-                "oderwat.indent-rainbow",
+                "tintoy.msbuild-project-tools",
                 "ms-azuretools.vscode-docker"
             ]
         }
